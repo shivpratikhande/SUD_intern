@@ -1,10 +1,12 @@
 import Heading from '@/components/Heading'
+import Nav from '@/components/Nav'
 import React from 'react'
 
 function Landing() {
   return (
     <div>
-        <Heading/>
+      <Nav />
+      <Heading />
     </div>
   )
 }
