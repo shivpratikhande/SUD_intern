@@ -1,10 +1,13 @@
+import Nav from "@/components/Nav";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Landing from "./pages/Landing";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Button>hello</Button>
-    </main>
+    <div>
+      <Landing />
+
+    </div>
   );
 }
