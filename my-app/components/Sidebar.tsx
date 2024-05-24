@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 import { Calendar } from './ui/calendar';
+import Link from 'next/link';
 
 function Sidebar() {
   const [date, setDate] = useState<Date | undefined>(new Date());
@@ -14,34 +15,34 @@ function Sidebar() {
     <div className="flex h-screen">
       <div className="flex flex-col">
         <div className="flex flex-col flex-1 overflow-y-auto w-64 text-xl gap-5 py-2 bg-black">
-          <a
+          <Link
             href="/home/allTasks"
             className={`py-2 px-4 ${selectedLink === 'allTasks' ? 'bg-white text-black' : 'text-white'} hover:bg-white hover:text-black hover:rounded-lg transition duration-500 rounded-lg`}
             onClick={() => handleClick('allTasks')}
           >
             All Tasks
-          </a>
-          <a
+          </Link>
+          <Link
             href="/home/addTask"
             className={`py-2 px-4 ${selectedLink === 'addTask' ? 'bg-white text-black' : 'text-white'} hover:bg-white hover:text-black hover:rounded-lg transition duration-500 rounded-lg`}
             onClick={() => handleClick('addTask')}
           >
             Add new Task
-          </a>
-          <a
-            href="/home/completedTask"
+          </Link>
+          <Link
+            href="/home/dashboard"
             className={`py-2 px-4 ${selectedLink === 'completedTask' ? 'bg-white text-black' : 'text-white'} hover:bg-white hover:text-black hover:rounded-lg transition duration-500 rounded-lg`}
             onClick={() => handleClick('completedTask')}
           >
             Completed Task
-          </a>
-          <a
+          </Link>
+          <Link
             href="/home/calender"
             className={`py-2 px-4 ${selectedLink === 'calendar' ? 'bg-white text-black' : 'text-white'} hover:bg-white hover:text-black hover:rounded-lg transition duration-500 rounded-lg`}
             onClick={() => handleClick('calendar')}
           >
             Calendar
-          </a>
+          </Link>
           {/* Add more sidebar items as needed */}
         </div>
       </div>

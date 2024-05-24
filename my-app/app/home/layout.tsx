@@ -1,13 +1,11 @@
-import Sidebar from '@/components/Sidebar'
-import React from 'react'
+import Sidebar from "@/components/Sidebar"
 
-function layout() {
+ //@ts-ignore
+export default function Layout({ children }) {
   return (
-    <div>
-    
-<Sidebar/>
+    <div className=" flex">
+    <Sidebar/>
+      <main>{children}</main>
     </div>
   )
 }
-
-export default layout
