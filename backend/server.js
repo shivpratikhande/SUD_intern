@@ -22,6 +22,10 @@ const taskSchema = new mongoose.Schema({
   description: String,
   deadline: Date,
   email: String,
+  completed: { 
+    type: Boolean, 
+    default: false }
+
 });
 
 const Task = mongoose.model('Task', taskSchema);
@@ -68,6 +72,21 @@ app.put('/api/tasks/:id', async (req, res) => {
   const task = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true });
   res.send(task);
 });
+
+app.patch('/api/tasks/:taskId', async (req, res) => {
+  try {
+    const taskId = req.params.taskId;
+    const updatedTask = await Task.findByIdAndUpdate(taskId, { completed: true }, { new: true });
+    if (!updatedTask) {
+      return res.status(404).json({ message: 'Task not found' });
+    }
+    res.json({ message: 'Task marked as completed', task: updatedTask });
+  } catch (error) {
+    console.error('Error marking task as completed:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
 
 app.delete('/api/tasks/:id', async (req, res) => {
   await Task.findByIdAndDelete(req.params.id);
