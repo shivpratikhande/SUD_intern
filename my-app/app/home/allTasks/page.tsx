@@ -1,8 +1,11 @@
+import Input from '@/components/Input'
 import React from 'react'
 
 function page() {
   return (
-    <div className=' bg-red-900'>page</div>
+    <div>
+      <Input name={"add task"} className={""} id={"tasks"} placeholder={"add task"} type={"string"}/>
+    </div>
   )
 }
 

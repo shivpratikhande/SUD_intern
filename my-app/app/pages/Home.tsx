@@ -6,8 +6,6 @@ import React from 'react'
 function Home() {
     return (
         <div>
-            <Top/>
-            <Sidebar />
 
 
         </div>
