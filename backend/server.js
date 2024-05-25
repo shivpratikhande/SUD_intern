@@ -2,14 +2,18 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
-require('dotenv').config();
+const dotenv = require('dotenv');
+
+dotenv.config();
+
+const uri = "mongodb+srv://shivpratikhande2017:nDuqwqnNauw7ff93@todocluster.hqvqfxt.mongodb.net/?retryWrites=true&w=majority&appName=todoCluster"
+
+
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-
-const uri = "mongodb+srv://shivpratikhande:4ET2T9kfiWFhRK69@cluster0.jzd0bd1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 
 mongoose.connect(uri)
