@@ -32,6 +32,7 @@ function page() {
             <Block>
                 {
                     //@ts-ignore
+                    
                     tasks.map((task) => (
                         <div key={task._id} className="mb-4 p-4 bg-gray-100 rounded">
                             <h2 className="text-xl font-bold">{task.title}</h2>
