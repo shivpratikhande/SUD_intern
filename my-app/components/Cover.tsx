@@ -11,8 +11,8 @@ const Cover = ({ imageUrl, color, children }) => {
   };
 
   return (
-    <div className="relative w-full h-screen bg-cover bg-center overflow-hidden" style={coverStyle}>
-      <div className="absolute top-0 left-0 w-full h-full flex flex-col  items-center">
+    <div className={`relative w-full h-screen bg-cover bg-center overflow-hidden`} style={coverStyle}>
+      <div className={`absolute top-0 left-0 w-full h-full flex flex-col  items-center  `}>
         {children}
       </div>
     </div>

@@ -3,18 +3,15 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
+const { body, validationResult } = require('express-validator');
 
 dotenv.config();
 
 const uri = "mongodb+srv://shivpratikhande2017:nDuqwqnNauw7ff93@todocluster.hqvqfxt.mongodb.net/?retryWrites=true&w=majority&appName=todoCluster"
 
-
-
 const app = express();
 app.use(cors());
 app.use(express.json());
-
-
 
 mongoose.connect(uri)
   .then(() => console.log('MongoDB connected successfully'))
@@ -30,10 +27,24 @@ const taskSchema = new mongoose.Schema({
 
 const Task = mongoose.model('Task', taskSchema);
 
-app.post('/api/tasks', async (req, res) => {
-  const task = new Task(req.body);
-  await task.save();
-  res.send(task);
+app.post('/api/tasks', [
+  body('title').isString().notEmpty(),
+  body('description').isString().notEmpty(),
+  body('deadline').isISO8601().toDate(),
+  body('email').isEmail(),
+], async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
+  try {
+    const task = new Task(req.body);
+    await task.save();
+    res.status(201).send(task);
+  } catch (err) {
+    res.status(500).send({ error: 'Failed to create task' });
+  }
 });
 
 app.get('/api/tasks', async (req, res) => {

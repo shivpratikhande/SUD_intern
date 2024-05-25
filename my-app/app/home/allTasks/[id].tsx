@@ -1,11 +1,17 @@
 "use client"
 import { useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
+
+
 import axios from 'axios';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 const TaskDetails = () => {
   const router = useRouter();
+  const pathname = usePathname();
+
+
   const { id } = router.query;
   const [task, setTask] = useState(null);
 
