@@ -5,15 +5,14 @@ const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
 const { body, validationResult } = require('express-validator');
 
-dotenv.config();
-
-const uri = "mongodb+srv://shivpratikhande2017:nDuqwqnNauw7ff93@todocluster.hqvqfxt.mongodb.net/?retryWrites=true&w=majority&appName=todoCluster"
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(uri)
+require('dotenv').config();
+
+mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected successfully'))
   .catch(err => console.error('MongoDB connection error:', err));
 
@@ -47,9 +46,17 @@ app.post('/api/tasks', [
   }
 });
 
-app.get('/api/tasks', async (req, res) => {
+/* app.get('/api/tasks', async (req, res) => {
   const tasks = await Task.find();
-  res.send(tasks,"post successfully");
+  res.send(tasks, "post successfully");
+}); */
+app.get('/api/tasks', async (req, res) => {
+  try {
+    const tasks = await Task.find({});
+    res.status(200).json(tasks);
+  } catch (error) {
+    res.status(500).json({ error: 'Error fetching tasks' });
+  }
 });
 
 app.get('/api/tasks/:id', async (req, res) => {
@@ -70,8 +77,8 @@ app.delete('/api/tasks/:id', async (req, res) => {
 const transporter = nodemailer.createTransport({
   service: 'Gmail',
   auth: {
-    user: process.env.EMAIL,
-    pass: process.env.EMAIL_PASSWORD,
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
   },
 });
 
@@ -93,20 +100,31 @@ const sendReminderEmail = (task) => {
 };
 
 const checkTasks = async () => {
-  const now = new Date();
-  const oneHourLater = new Date(now.getTime() + 60 * 60 * 1000);
+  try {
+    const now = new Date();
+    const oneHourLater = new Date(now.getTime() +  60 * 1000);
 
-  const tasks = await Task.find({
-    deadline: {
-      $gte: now,
-      $lte: oneHourLater,
-    },
-  });
+    const tasks = await Task.find({
+      deadline: {
+        $gte: now,
+        $lte: oneHourLater,
+      },
+    });
 
-  tasks.forEach(sendReminderEmail);
+    tasks.forEach(sendReminderEmail);
+  } catch (error) {
+    console.error('Error checking tasks:', error);
+  }
 };
-
-setInterval(checkTasks, 60 * 1000); // Check every minute
+  
+(function checkTasksPeriodically() {
+  checkTasks().then(() => {
+    setTimeout(checkTasksPeriodically, 60 * 1000); // Check every minute
+  }).catch((error) => {
+    console.error('Error in scheduled task:', error);
+    setTimeout(checkTasksPeriodically, 60 * 1000); // Retry after a minute on error
+  });
+})();
 
 app.listen(process.env.PORT || 5000, () => {
   console.log('Server is running on port', process.env.PORT || 5000);

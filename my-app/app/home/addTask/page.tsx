@@ -32,7 +32,7 @@ const TaskForm = ({ task }) => {
         // Otherwise, create a new task
         await axios.post('http://localhost:5000/api/tasks', data);
       }
-      router.push('/');
+      router.push('/home');
     } catch (error) {
       console.error('Error saving task:', error);
     }
