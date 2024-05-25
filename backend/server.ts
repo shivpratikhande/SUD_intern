@@ -8,7 +8,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+
+const uri = "mongodb+srv://shivpratikhande:4ET2T9kfiWFhRK69@cluster0.jzd0bd1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+
+
+mongoose.connect(uri)
+  .then(() => console.log('MongoDB connected successfully'))
+  .catch(err => console.error('MongoDB connection error:', err));
+
 
 const taskSchema = new mongoose.Schema({
   title: String,
