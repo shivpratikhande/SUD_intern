@@ -38,7 +38,7 @@ app.post('/api/tasks', async (req, res) => {
 
 app.get('/api/tasks', async (req, res) => {
   const tasks = await Task.find();
-  res.send(tasks);
+  res.send(tasks,"post successfully");
 });
 
 app.get('/api/tasks/:id', async (req, res) => {
