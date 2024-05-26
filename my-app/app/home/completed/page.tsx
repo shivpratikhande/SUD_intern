@@ -5,6 +5,7 @@ import Block from '@/components/Block'
 import Link from 'next/link'
 
 function page() {
+  //@ts-ignore
   const [tasks, setTasks] = useState<Task[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -27,6 +28,8 @@ function page() {
   return (
     <div>
       <Block className=' overflow-auto h-[75vh]'>
+      <h1 className="text-3xl font-bold mb-5"># Completed Tasks</h1>
+
         {
           //@ts-ignore
 

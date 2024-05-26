@@ -11,15 +11,15 @@ function Top() {
         <div>
             <div className=" bg-black items-center text-white flex justify-between p-8">
 
-                <div >
-                    <h1 className=' text-xl font-bold animate-pulse'>Welcome back shivv!</h1>
+                <div className=' bg-white text-black p-[2px] px-3 rounded-xl animate-pulse ' >
+                    <h1 className=' text-4xl font-bold  font-mono pt-2  '> BUDDY</h1>
                 </div>
-                <div className=' '>
+                <div className=' bg-white flex text-center items-center px-5 rounded-xl  '>
                 <FaSearch className="h-5 w-5 text-gray-400 mr-2" />
 
                     <input 
                     type="text" 
-                    className=' p-1 w-72 rounded-xl h-9 text-black px-3 border border-gray-500' 
+                    className=' p-1 w-72 rounded-xl h-9 text-black px-3 border-none focus:outline-none  ' 
                     placeholder='Search...' />
                 </div>
                 <div>
