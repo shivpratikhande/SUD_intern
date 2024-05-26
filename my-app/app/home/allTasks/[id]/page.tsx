@@ -5,14 +5,22 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { TrashIcon } from '@radix-ui/react-icons';
 import { PencilIcon } from '@heroicons/react/16/solid';
-import { Button } from '@/components/ui/button';
 
 
+
+interface Task {
+  _id: string;
+  title: string;
+  description: string;
+  deadline: Date;
+  email: string;
+  completed: boolean;
+}
 
 function page({ params }: { params: { id: string } }) {
   const router = useRouter();
   const { id } = params
-  const [task, setTask] = useState(null);
+  const [task, setTask] = useState<Task | null>(null);
 
   console.log(id)
   useEffect(() => {
