@@ -1,5 +1,9 @@
 import React from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { FaSearch } from 'react-icons/fa';
+
+
+
 
 
 function Top() {
@@ -11,7 +15,12 @@ function Top() {
                     <h1 className=' text-xl font-bold animate-pulse'>Welcome back shivv!</h1>
                 </div>
                 <div className=' '>
-                    <input type="text" className=' p-1 w-72 rounded-xl h-9 text-black px-3 border border-gray-500' />
+                <FaSearch className="h-5 w-5 text-gray-400 mr-2" />
+
+                    <input 
+                    type="text" 
+                    className=' p-1 w-72 rounded-xl h-9 text-black px-3 border border-gray-500' 
+                    placeholder='Search...' />
                 </div>
                 <div>
                     <Avatar>

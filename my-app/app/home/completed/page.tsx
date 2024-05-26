@@ -10,7 +10,7 @@ function page() {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    
+
     fetchTasks();
   }, []);
 
@@ -26,29 +26,27 @@ function page() {
   };
   return (
     <div>
-       <Block className= ' overflow-auto h-[75vh]'>
-                {
-                    //@ts-ignore
-                    
-                    tasks
-                    .filter(task => task.completed)
-                    .map((task) => (
-                        <div key={task._id} className="mb-4 p-4 bg-gray-100 rounded">
-                            <h2 className="text-xl font-bold">{task.title}</h2>
-                            <p>{task.description}</p>
-                            <p className="text-sm text-gray-500">Deadline: {new Date(task.deadline).toLocaleString()}</p>
-                            <p className="text-sm text-gray-500">Reminder Email: {task.email}</p>
-                            <div className="flex space-x-4">
-                                <Link href={`/tasks/edit/${task._id}`} className="flex-1 text-center p-2 bg-yellow-500 text-white font-bold rounded">
-                                    Edit
-                                </Link>
-                                <Link href={`/home/allTasks/${task._id}`} className="flex-1 text-center p-2 bg-blue-500 text-white font-bold rounded">
-                                    View
-                                </Link>
-                            </div>
-                        </div>
-                    ))}
-            </Block>
+      <Block className=' overflow-auto h-[75vh]'>
+        {
+          //@ts-ignore
+
+          tasks
+            .filter(task => task.completed)
+            .map((task) => (
+              <div key={task._id} className="mb-4 p-4 bg-gray-100 rounded">
+                <h2 className="text-xl font-bold">{task.title}</h2>
+                <p>{task.description}</p>
+                <p className="text-sm text-gray-500">Deadline: {new Date(task.deadline).toLocaleString()}</p>
+                <p className="text-sm text-gray-500">Reminder Email: {task.email}</p>
+                <div className="flex space-x-4 mt-4">
+
+                  <Link href={`/home/allTasks/${task._id}`} className="flex-1 text-center p-2 bg-black  hover:bg-blue-500 text-white font-bold rounded-lg">
+                    View
+                  </Link>
+                </div>
+              </div>
+            ))}
+      </Block>
     </div>
   )
 }

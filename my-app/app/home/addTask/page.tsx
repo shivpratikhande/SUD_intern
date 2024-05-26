@@ -25,11 +25,9 @@ const TaskForm = ({ task }) => {
     };
     console.log("submit")
     try {
-      if (task && task._id) { // Add null check for task before accessing _id
-        // If task._id exists, update the existing task
+      if (task && task._id) { 
         await axios.put(`http://localhost:5000/api/tasks/${task._id}`, data);
       } else {
-        // Otherwise, create a new task
         await axios.post('http://localhost:5000/api/tasks', data);
       }
       router.push('/home');

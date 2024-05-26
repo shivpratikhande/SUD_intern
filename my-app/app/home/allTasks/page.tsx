@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import Link from 'next/link';
 import Block from '@/components/Block';
+import { TrashIcon } from '@radix-ui/react-icons';
+import { EyeIcon, PencilIcon } from '@heroicons/react/16/solid';
 
 
 function page() {
@@ -45,11 +47,14 @@ function page() {
                                     <p className="text-sm text-gray-500">Reminder Email: {task.email}</p>
                                 </div>
                                 <div className=" flex gap-3 ">
-                                    <Link href={`/tasks/edit/${task._id}`} className="flex-1 text-center p-2  bg-black hover:bg-yellow-500 text-white hi font-bold rounded">
-                                        Edit
+                                    <Link href={`/tasks/edit/${task._id}`} className="flex-1 text-center p-2 items-center  hover:bg-black bg-yellow-500 text-white hi font-bold rounded">
+                                        <PencilIcon className="h-6 w-6" />
+                                        <h1 className=' text-sm p-1'>Edit</h1>
                                     </Link>
-                                    <Link href={`/home/allTasks/${task._id}`} className="flex-1 text-center p-2  bg-black hover:bg-blue-500 text-white font-bold rounded">
-                                        View
+                                    <Link href={`/home/allTasks/${task._id}`} className="flex-1  p-2 items-center text-center  bg-black hover:bg-blue-500 text-white font-bold rounded">
+                                        <EyeIcon className="h-6 w-6 ml-1" />
+                                        <h1 className=' text-sm p-1'>View</h1>
+
                                     </Link>
                                 </div>
                             </div>

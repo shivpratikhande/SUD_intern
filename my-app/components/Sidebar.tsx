@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Calendar } from './ui/calendar';
 import Link from 'next/link';
+import { PlusIcon } from '@radix-ui/react-icons';
 
 function Sidebar() {
   const [date, setDate] = useState<Date | undefined>(new Date());
@@ -19,10 +20,12 @@ function Sidebar() {
          
           <Link
             href="/home/addTask"
-            className={`py-2 px-4 ${selectedLink === 'addTask' ? 'bg-white text-black' : 'text-white'} hover:bg-white hover:text-black hover:rounded-lg transition duration-500 rounded-lg`}
+            className={`py-2 px-4 ${selectedLink === 'addTask' ? 'bg-white text-black' : 'text-white'} hover:bg-white hover:text-black hover:rounded-lg transition duration-500 rounded-lg flex gap-3`}
             onClick={() => handleClick('addTask')}
           >
-            Add new Task
+            Add Task
+            <PlusIcon className="h-6 w-6 border-2 border-white rounded-full font-bold" />
+
           </Link>
           <Link
             href="/home/today"
