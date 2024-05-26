@@ -70,7 +70,8 @@ function page({ params }: { params: { id: string } }) {
       <p className=" text-sm flex gap-1">
         status:
         <p className="mb-4 text-sm text-gray-500">
-          {(task.completed) ? "task completed" : "task remaning"}
+          {( //@ts-ignore
+            task.completed) ? "task completed" : "task remaning"}
         </p>
       </p>
       <div className="flex space-x-4">
