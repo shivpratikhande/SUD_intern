@@ -39,7 +39,7 @@ function Sidebar() {
             All Tasks
           </Link>
           <Link
-            href="/home/dashboard"
+            href="/home/completed"
             className={`py-2 px-4 ${selectedLink === 'completedTask' ? 'bg-white text-black' : 'text-white'} hover:bg-white hover:text-black hover:rounded-lg transition duration-500 rounded-lg`}
             onClick={() => handleClick('completedTask')}
           >

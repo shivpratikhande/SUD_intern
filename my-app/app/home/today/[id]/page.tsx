@@ -27,7 +27,7 @@ function page({ params }: { params: { id: string } }) {
   };
   const handleDelete = async () => {
     await axios.delete(`http://localhost:5000/api/tasks/${id}`);
-    router.push('/home/allTasks');
+    router.push('/home/today');
   };
 
   if (!task) return <p>Loading...</p>;

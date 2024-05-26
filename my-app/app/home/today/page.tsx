@@ -43,16 +43,12 @@ const TasksPage: React.FC = () => {
 
   const handleTaskCompletion = async (taskId: string) => {
     try {
-      // Remove the task from the screen
       setTasks(tasks.filter(task => task._id !== taskId));
       
-      // Mark the task as completed in the database
       await axios.patch(`http://localhost:5000/api/tasks/${taskId}`, { completed: true });
     } catch (error) {
       console.error('Error marking task as completed:', error);
-      // If there's an error, re-add the task to the screen
-      // Since we removed the task from the screen earlier, we need to fetch tasks again to get the updated list
-      fetchTasks(); // Assuming fetchTasks is a function to refetch tasks from the server
+      fetchTasks()
     }
   };
   
@@ -81,7 +77,7 @@ const TasksPage: React.FC = () => {
         <Link href={`/tasks/edit/${task._id}`} className="flex-1 text-center p-2 bg-yellow-500 text-white font-bold rounded">
           Edit
         </Link>
-        <Link href={`/tasks/${task._id}`} className="flex-1 text-center p-2 bg-blue-500 text-white font-bold rounded">
+        <Link href={`/home/allTasks/${task._id}`} className="flex-1 text-center p-2 bg-blue-500 text-white font-bold rounded">
           View
         </Link>
       </div>
