@@ -1,4 +1,4 @@
-# Task Management Application
+# Task Management Application [ BUDDY ]
 
 ## Overview
 This Task Management Application built with Next.js allows users to organize, track, and manage tasks efficiently. With features such as task creation, editing, marking as completed, setting deadlines, and receiving email reminders, users can stay on top of their tasks and increase productivity.
@@ -21,7 +21,7 @@ This Task Management Application built with Next.js allows users to organize, tr
 
 ## Setup Instructions
 1. Clone the repository:
-  git clone [repository URL]
+  git clone https://github.com/shivpratikhande/SUD_intern
 
 2. Install dependencies:
    cd my_app, cd backend
