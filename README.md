@@ -42,8 +42,6 @@ The frontend of the application is deployed on Vercel. For deploying the backend
 ## Contributing
 Contributions are welcome! Please fork the repository and create a pull request with your proposed changes.
 
-## License
-[License Name] - [License Description]
 
 ## Contact
 For any inquiries or support, please contact shivv at shivpratikhande2017@gmail.com.
