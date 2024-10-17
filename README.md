@@ -47,6 +47,9 @@ Contributions are welcome! Please fork the repository and create a pull request 
 For any inquiries or support, please contact shivv at shivpratikhande2017@gmail.com.
 
 
+![image](https://github.com/user-attachments/assets/4d8bb35d-ab29-4ebb-ac94-de04c3768420)
+![image](https://github.com/user-attachments/assets/b3191cb5-067a-45ed-a1ca-48ae74b07cdc)
+
 
 
 
